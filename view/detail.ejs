@@ -1,0 +1,98 @@
+<%- include('includes/head.ejs') %>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  </head>
+
+  <body>
+    <main class="container">
+      <div class="col-12 my-3 float-right ">
+        <form action="/player/edit" method="POST" class="col-md-10 row">
+          <div class="form-group col-12" >
+            <label for="id">Name</label>
+            <input class="form-control" type="text" name="id" id="id" value="<%= data.id %>" />
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-info">Edit</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-12 row border border-secondary py-4">
+        <div class="col-4">
+          <div class="col-12">
+            <img src="<%= data.profile %>" />
+            <h1 class="text-center">
+              <%= data.name %>
+            </h1>
+          </div>
+        </div>
+        <div class="col-8">
+          <ul class="list-group">
+
+
+            <li class="list-group-item d-flex justify-content-between">
+              <div>Name</div>
+              <div>
+                <%= data.name %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <div>Matched</div>
+              <div>
+                <%= data.matches %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <div>Fifty</div>
+              <div>
+                <%= data.fifty %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <div>hundreds</div>
+              <div>
+                <%= data.hundreds %>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <div>age</div>
+              <div>
+                <%= data.age %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <div>dob</div>
+              <div>
+                <%= data.dob %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <div>avg</div>
+              <div>
+                <%= data.avg %>
+              </div>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <div>wicket</div>
+              <div>
+                <%= data.wicket %>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-12">
+          <p>
+            <%= data.career %>
+          </p>
+        </div>
+      </div>
+    </main>
+    <%- include('includes/end.ejs') %>

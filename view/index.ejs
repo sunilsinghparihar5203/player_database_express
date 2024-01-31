@@ -1,0 +1,77 @@
+<%- include('includes/head.ejs') %>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  </head>
+
+  <body>
+    <main class="container">
+      <div class="col-12 d-flex align-item-center justify-content-center">
+        <form action="/player/search" method="POST" class="col-md-10 row">
+          <h1 class="col-12 my-4 text-center">Search player</h1>
+          <div class="form-group col-12">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" name="name" id="name" />
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-info">Search</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-12 d-flex align-item-center justify-content-center">
+
+        <form action="/player/submit" method="POST" class="col-md-10 row">
+          <h1 class="col-12 my-4 text-center">Add player</h1>
+
+          <div class="form-group col-6">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" name="name" id="name" />
+          </div>
+          <div class="form-group col-6">
+            <label for="profile">Image</label>
+            <input class="form-control" type="url" name="profile" if="profile" />
+          </div>
+          <div class="form-group col-6">
+            <label for="DOB">DOB</label>
+            <input class="form-control" type="Date" name="DOB" id="DOB" />
+          </div>
+          <div class="form-group col-6">
+            <label for="matches">matches</label>
+            <input class="form-control" type="number" min="0" name="matches" id="matches" />
+          </div>
+          <div class="form-group col-6">
+            <label for="fifty">fifty</label>
+            <input class="form-control" type="number" name="fifty" id="fifty" />
+          </div>
+          <div class="form-group col-6">
+            <label for="hundreds">hundreds</label>
+            <input class="form-control" type="number" min="0" name="hundreds" id="hundreds" />
+          </div>
+          <div class="form-group col-6">
+            <label for="fifty">age</label>
+            <input class="form-control" type="number" min="16" name="age" id="age" value="18" />
+          </div>
+          <div class="form-group col-6">
+            <label for="birthplace">birthplace</label>
+            <input class="form-control" type="text" name="birthplace" id="birthplace" />
+          </div>
+          <div class="form-group col-6">
+            <label for="avg">avg</label>
+            <input class="form-control" type="text" name="avg" id="avg" />
+          </div>
+          <div class="form-group col-6">
+            <label for="wicket">wicket</label>
+            <input class="form-control" type="number" name="wicket" id="wicket" />
+          </div>
+          <div class="form-group col-12">
+            <label for="career">career</label>
+            <textarea class="form-control" type="number" name="career" id="career"></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-info">Save</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <%- include('includes/end.ejs') %>
