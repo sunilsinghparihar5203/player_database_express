@@ -39,21 +39,21 @@ exports.saveNewPlayer = (req, res, next) => {
 };
 
 exports.findPlayerByName = (req, res, next) => {
-  console.log(req.body)
+  console.log(req.body);
   const name = req.body.name;
   console.log(name);
   if (!name) {
     res.send("Invalid name");
   } else {
     player
-      .findOne({ where: { name: name }, })
+      .findOne({ where: { name: name } })
       .then((result) => {
         console.log("found palyer");
-        res.render('detail',{
-          data:result,
-          path:'/detail',
-          pageTitle:"Player Details"
-        })
+        res.render("detail", {
+          data: result,
+          path: "/detail",
+          pageTitle: "Player Details",
+        });
       })
       .catch((err) => console.log(err));
   }
@@ -61,15 +61,23 @@ exports.findPlayerByName = (req, res, next) => {
 
 exports.editPlayer = (req, res, next) => {
   const id = req.body.id;
-  console.log("inside edit")
-  console.log({id})
+  console.log("inside edit");
+  console.log({ id });
   player
     .findOne({ where: { id: id } })
     .then((result) => {
+      const dateObject = new Date(result.dob);
+
+      const year = dateObject.getFullYear();
+      const month = (dateObject.getMonth() + 1).toString().padStart(2, "0"); // Months are zero-indexed
+      const day = dateObject.getDate().toString().padStart(2, "0");
+
+      const formattedDate = `${year}-${month}-${day}`;
       res.render("edit", {
         data: result,
-        path:'/edit',
-        pageTitle:"Edit Player"
+        dob: formattedDate,
+        path: "/edit",
+        pageTitle: "Edit Player",
       });
     })
     .catch((err) => console.log(err));
@@ -82,7 +90,7 @@ exports.editPlayerSubmit = (req, res, next) => {
   const fifty = req.body.fifty;
   const hundreds = req.body.hundreds;
   const age = req.body.age;
-  const dob = new Date(req.body.DOB);
+  const dob = req.body.DOB;
   const profile = req.body.profile;
   const birthplace = req.body.birthplace;
   const career = req.body.career;
@@ -104,11 +112,11 @@ exports.editPlayerSubmit = (req, res, next) => {
         avg: avg,
         wicket: wicket,
       },
-      { where: { id: +id } }
+      { where: { id: id } }
     )
     .then((result) => {
-      console.log({result});
-      res.send(result);
+      console.log({ result });
+      res.redirect("/");
     })
     .catch((err) => console.log(err));
 };
